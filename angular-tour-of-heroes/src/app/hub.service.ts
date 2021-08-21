@@ -24,7 +24,8 @@ export class HubService {
 
   /** GET hubs from the server */
   getHubs(): Observable<HubModel[]> {
-    return this.http.get<HubModel[]>(this.apiUrl + "/api/Hubs/all")
+    let api = new HubsClient(this.http, this.apiUrl);
+    return api.all()
       .pipe(
         tap(_ => this.log('fetched hubs')),
         catchError(this.handleError<HubModel[]>('getHubs', []))
