@@ -12,10 +12,10 @@ import { ApiClient, FlightsClient, Hub as HubModel, HubsClient } from './api.gen
 export class HubService {
 
   //private apiUrl = 'api/hubs';  // URL to web api
-  private apiUrl = 'http://localhost:5000';  // URL to web api
+  private apiUrl = 'https://localhost:5001';  // URL to web api
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Origin': 'http://localhost:5000' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(

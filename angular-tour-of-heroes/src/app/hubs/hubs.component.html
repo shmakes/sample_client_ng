@@ -5,7 +5,7 @@
     <span class="badge">{{Hub.id}}</span> {{Hub.name}} - {{Hub.mainContactEmail}} - {{Hub.alternateEmail}}
     <ul>
       <li *ngFor="let Flight of Hub.flights">
-        {{Flight.name}}
+        {{Flight.name}} ({{Flight.flightDate.format("yyyy-MM-DD")}})
       </li>
     </ul>
   </li>
