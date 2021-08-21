@@ -18,7 +18,6 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    let hub = this.heroService.getHubs();
     this.heroService.getHeroes()
     .subscribe(heroes => this.heroes = heroes);
   }

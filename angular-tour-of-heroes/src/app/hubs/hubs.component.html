@@ -1,0 +1,7 @@
+<h2>My Hubs</h2>
+
+<ul class="Hubs">
+  <li *ngFor="let Hub of Hubs">
+    <span class="badge">{{Hub.id}}</span> {{Hub.name}} - {{Hub.mainContactEmail}} - {{Hub.alternateEmail}}
+  </li>
+</ul>

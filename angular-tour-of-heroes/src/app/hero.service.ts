@@ -7,13 +7,10 @@ import { catchError, map, takeLast, tap } from 'rxjs/operators';
 import { Hero } from './hero';
 import { MessageService } from './message.service';
 
-import { ApiClient, FlightsClient, Hub, HubsClient } from './api.generated.clients';
-
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 
   private heroesUrl = 'api/heroes';  // URL to web api
-  private apiUrl = 'http://localhost:5000';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,19 +26,6 @@ export class HeroService {
       .pipe(
         tap(_ => this.log('fetched heroes')),
         catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
-  }
-
-  getHubs(): Observable<Hub[]> {
-    console.log("starting");
-    let api = new HubsClient(this.http, this.apiUrl);
-    api.all().pipe().subscribe(value => console.log(value[1]));
-    let ws = this.http.get<Hero[]>(this.apiUrl + '/api/Hubs/all');
-    ws.pipe().subscribe(value => console.log(value[1]));
-    return api.all()
-      .pipe(
-        tap(_ => this.log('fetched hubs')),
-        catchError(this.handleError<Hub[]>('getHubs'))
       );
   }
 
