@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Hub } from '../api.generated.clients';
+import { Flight } from '../api.generated.clients';
 import { HubService } from '../hub.service';
 
 @Component({

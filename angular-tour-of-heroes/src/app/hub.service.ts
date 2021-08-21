@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, takeLast, tap } from 'rxjs/operators';
 
-import { Hub } from './hub';
 import { MessageService } from './message.service';
 
 import { ApiClient, FlightsClient, Hub as HubModel, HubsClient } from './api.generated.clients';
