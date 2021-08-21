@@ -596,6 +596,7 @@ export class Flight implements IFlight {
     hubId!: number;
     name!: string | undefined;
     flightDate!: moment.Moment;
+    capacity!: number;
 
     constructor(data?: IFlight) {
         if (data) {
@@ -612,6 +613,7 @@ export class Flight implements IFlight {
             this.hubId = _data["hubId"];
             this.name = _data["name"];
             this.flightDate = _data["flightDate"] ? moment.parseZone(_data["flightDate"].toString()) : <any>undefined;
+            this.capacity = _data["capacity"];
         }
     }
 
@@ -626,6 +628,7 @@ export class Flight implements IFlight {
         data["hubId"] = this.hubId;
         data["name"] = this.name;
         data["flightDate"] = this.flightDate ? this.flightDate.toISOString(true) : <any>undefined;
+        data["capacity"] = this.capacity;
         return data; 
     }
 }
@@ -635,6 +638,7 @@ export interface IFlight {
     hubId: number;
     name: string | undefined;
     flightDate: moment.Moment;
+    capacity: number;
 }
 
 export class Hub implements IHub {
