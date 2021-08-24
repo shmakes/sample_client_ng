@@ -6,7 +6,7 @@ import { catchError, map, takeLast, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
 
-import { ApiClient, FlightsClient, Hub as HubModel, HubsClient } from './api.generated.clients';
+import { Hub as HubModel, HubsClient } from './api.generated.clients';
 
 @Injectable({ providedIn: 'root' })
 export class HubService {
@@ -24,8 +24,8 @@ export class HubService {
 
   /** GET hubs from the server */
   getHubs(): Observable<HubModel[]> {
-    let api = new HubsClient(this.http, this.apiUrl);
-    return api.all()
+    let hubs = new HubsClient(this.http, this.apiUrl);
+    return hubs.all()
       .pipe(
         tap(_ => this.log('fetched hubs')),
         catchError(this.handleError<HubModel[]>('getHubs', []))
